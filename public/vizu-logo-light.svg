@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" fill="none">
+  <g stroke="#0E8F55" stroke-width="3.2" stroke-linecap="round">
+    <path d="M4 18 V6 H16"></path>
+    <path d="M4 46 V58 H16"></path>
+    <path d="M40 6 H52 V18"></path>
+    <path d="M40 58 H52 V46"></path>
+  </g>
+  <text x="66" y="43" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="34" fill="#101114" letter-spacing="0.5">vizu</text>
+</svg>
