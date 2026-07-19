@@ -7,7 +7,7 @@ SaaS que ajuda freelancers a criar propostas comerciais com IA, enviar por link 
 - [Next.js 15](https://nextjs.org) (App Router) + TypeScript
 - Tailwind CSS
 - [Supabase](https://supabase.com) (Postgres + Auth + Storage)
-- API da Anthropic para geração de propostas (chamada apenas via Route Handler no servidor, nunca exposta no client)
+- IA para geração de propostas (chamada apenas via Route Handler no servidor, nunca exposta no client) — ver [nota sobre o provedor ativo](#geração-de-propostas-com-ia)
 
 ## Estrutura de pastas
 
@@ -68,7 +68,18 @@ Definidas em `.env.local` (veja `.env.local.example`):
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API | URL do projeto, exposta no client |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase → Project Settings → API | Publishable key (chave pública), exposta no client |
 | `SUPABASE_SECRET_KEY` | Supabase → Project Settings → API | Secret key (chave de admin), **apenas server-side** (Route Handlers) |
-| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) | Geração de propostas com IA, **apenas server-side** |
+| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) | Geração de propostas com IA (Anthropic), **apenas server-side** |
+| `GEMINI_API_KEY` | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) | Geração de propostas com IA (Gemini), **apenas server-side** |
+
+## Geração de propostas com IA
+
+O provedor de IA usado em `/api/propostas/generate` é intercambiável — veja `src/lib/ai/`:
+
+- `src/lib/ai/prompt.ts` — instruções/prompt compartilhado entre provedores
+- `src/lib/ai/claude.ts` — implementação com a Anthropic (`generateProposalWithClaude`)
+- `src/lib/ai/gemini.ts` — implementação com o Gemini (`generateProposalWithGemini`)
+
+**Provedor ativo no momento: Gemini** (temporário, enquanto não há créditos na conta Anthropic). Para reverter para a Anthropic, em `src/app/api/propostas/generate/route.ts` troque a chamada `generateProposalWithGemini` por `generateProposalWithClaude` e reative o import comentado — nenhum outro arquivo precisa mudar.
 
 ## Banco de dados
 

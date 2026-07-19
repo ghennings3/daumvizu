@@ -39,7 +39,7 @@ export default async function PropostasPage() {
 
   return (
     <div className="p-10">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold text-foreground">
             Propostas

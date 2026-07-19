@@ -15,7 +15,7 @@ export function Sidebar({ userName }: { userName: string }) {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-64 shrink-0 flex-col justify-between border-r border-border bg-background p-6">
+    <aside className="flex w-64 shrink-0 flex-col justify-between gap-8 overflow-y-auto border-r border-border bg-background p-6">
       <div>
         <Image
           src="/vizu-logo-dark.svg"
