@@ -2,11 +2,11 @@ import { createBrowserClient } from "@supabase/ssr";
 
 /**
  * Supabase client para uso em Client Components.
- * Usa as chaves públicas (anon key) — nunca use a service role key aqui.
+ * Usa a publishable key (chave pública) — nunca use a secret key aqui.
  */
 export function createClient() {
   return createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
   );
 }

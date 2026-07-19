@@ -43,7 +43,7 @@ supabase/
    supabase db push
    ```
 
-   Ou cole o conteúdo de `supabase/migrations/20260718120000_init_schema.sql` no SQL Editor do painel do Supabase.
+   Ou cole o conteúdo dos arquivos em `supabase/migrations/` (nessa ordem) no SQL Editor do painel do Supabase.
 
 3. Copie o arquivo de variáveis de ambiente e preencha os valores:
 
@@ -66,8 +66,8 @@ Definidas em `.env.local` (veja `.env.local.example`):
 | Variável | Onde encontrar | Uso |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API | URL do projeto, exposta no client |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API | Chave pública (anon), exposta no client |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API | Chave de admin, **apenas server-side** (Route Handlers) |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase → Project Settings → API | Publishable key (chave pública), exposta no client |
+| `SUPABASE_SECRET_KEY` | Supabase → Project Settings → API | Secret key (chave de admin), **apenas server-side** (Route Handlers) |
 | `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) | Geração de propostas com IA, **apenas server-side** |
 
 ## Banco de dados
@@ -78,7 +78,7 @@ Row Level Security habilitada em todas as tabelas:
 
 - Cada freelancer só acessa seus próprios `clients` e `proposals`.
 - A rota pública `/p/[slug]` lê a proposta correspondente sem autenticação (policy dedicada para o role `anon`), exceto propostas em status `rascunho`.
-- Eventos de `proposal_events` originados da página pública (ex.: registrar "visualizada") devem ser gravados por uma Route Handler usando a `SUPABASE_SERVICE_ROLE_KEY`, nunca diretamente pelo client anônimo.
+- Eventos de `proposal_events` originados da página pública (ex.: registrar "visualizada") devem ser gravados por uma Route Handler usando a `SUPABASE_SECRET_KEY`, nunca diretamente pelo client anônimo.
 
 ## Status do setup
 

@@ -103,7 +103,10 @@ export function AuthForm({ initialMode }: { initialMode: Mode }) {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { nome: nome.trim(), empresa: empresa.trim() } },
+        options: {
+          data: { nome: nome.trim(), empresa: empresa.trim() },
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
+        },
       });
 
       setLoading(false);
