@@ -5,6 +5,7 @@ const config: Config = {
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -29,12 +30,12 @@ const config: Config = {
 
         // Status de propostas
         status: {
-          draft: "#8B93A7",
-          sent: "#60A5FA",
+          draft: "#9CA3AF",
+          sent: "#818CF8",
           viewed: "#60A5FA",
-          negotiation: "#FBBF24",
+          negotiation: "#F5A524",
           accepted: "#3ECF8E",
-          rejected: "#F87171",
+          rejected: "#FB7185",
         },
       },
       fontFamily: {
